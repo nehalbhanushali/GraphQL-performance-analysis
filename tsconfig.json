@@ -2,6 +2,7 @@
     "exclude": [
       "node_modules/*/**",
       "apollo/*/**",
+      "dist/**/*",
     ],
     "compilerOptions": {
       "target": "es2020",
