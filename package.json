@@ -18,7 +18,11 @@
   },
   "homepage": "https://github.com/nehalbhanushali/GraphQL-performance-analysis#readme",
   "dependencies": {
+    "@econify/graphql-request-profiler": "^0.1.2",
     "apollo-server": "^3.10.0",
     "graphql": "^16.5.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.19"
   }
 }

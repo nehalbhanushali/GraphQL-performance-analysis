@@ -1,4 +1,9 @@
 const { ApolloServer, gql } = require('apollo-server');
+const {
+  ApolloServerPluginLandingPageLocalDefault
+} = require('apollo-server-core');
+// Note: Optional chaining (?.) is currently not supported in Node.js version 13 and below
+const { createApolloProfilerPlugin } = require('@econify/graphql-request-profiler'); 
 
 // SCHEMA - defines the structure of our API
 const typeDefs = gql`
@@ -25,7 +30,7 @@ const typeDefs = gql`
  */
 const users = [
     {
-      id: 12345,
+      id: 1234567,
       name: 'Nehal Bhanushali',
       emailID: 'nrb1301@gmail.com',
       roles: ['user', 'admin']
@@ -52,7 +57,16 @@ const resolvers = {
   };
 
 // SERVER INSTANCE - The ApolloServer constructor requires two parameters: schema definition and set of resolvers.
-const server = new ApolloServer({ typeDefs, resolvers });
+const server = new ApolloServer({
+  typeDefs,
+  resolvers,
+  csrfPrevention: true,
+  cache: 'bounded',
+  plugins: [
+    ApolloServerPluginLandingPageLocalDefault({ embed: true }),
+    createApolloProfilerPlugin(),
+  ],
+});
 
 // Authentication & Authorization - Is the user logged in, who are they, what are their permissions.
 
@@ -83,6 +97,7 @@ const server = new ApolloServer({
 
 // The `listen` method launches a web server.
 server.listen().then(({ url }) => {
+  // TODO: nodemon not working
   console.log(`🚀  Server ready at ${url}`);
 });
 
