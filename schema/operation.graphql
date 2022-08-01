@@ -1,0 +1,9 @@
+query Operation {
+  users {
+    name
+    groups {
+      name
+      description
+    }
+  }
+}

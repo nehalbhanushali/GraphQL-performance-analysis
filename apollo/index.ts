@@ -1,5 +1,5 @@
 import { ApolloServer, gql } from 'apollo-server';
-import { buildSchema } from '../src/schema';
+import { buildSchema } from '../schema/schema';
 // Note: Optional chaining (?.) is currently not supported in Node.js version 13 and below
 import { createApolloProfilerPlugin } from '@econify/graphql-request-profiler';
 
@@ -34,10 +34,11 @@ const server = new ApolloServer({
 });
 */
 
+// ./dist/cli.js --schema ../GraphQL-performance-analysis/schema/operation.graphql --endpoint=http://localhost:4000/graphql
+
 
 // The `listen` method launches a web server.
 server.listen().then(({ url }) => {
-  // TODO: nodemon not working
   console.log(`🚀  Server ready at ${url}`);
 });
 
