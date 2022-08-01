@@ -1,44 +1,7 @@
 import { readFileSync } from 'fs';
 import { join } from 'path';
 import { makeExecutableSchema } from '@graphql-tools/schema';
-
-
-// DATA
-/* Apollo Server is what we call data-source agnostic 
- * — this means that you can fetch data from any source you like (SQL & NoSQL databases, REST APIs, other GraphQL APIs, or even just static JSON)
- */
-
-const groups = [
-  {
-    id: 21,
-    name: 'Administrators',
-    description: 'admin role',
-    users: [11]
-  },
-  {
-    id: 22,
-    name: 'Policy Makers',
-    description: 'can make policies',
-    users: [11, 12]
-  },
-]
-
-const users = [
-    {
-      id: 11,
-      name: 'Nehal Bhanushali',
-      emailID: 'nrb1301@gmail.com',
-      groups: groups
-    },
-    {
-      id: 12,
-      name: 'Vishal Gori',
-      emailID: 'vg1112@gmail.com',
-      groups: [groups[1]]
-    },
-]
-
-
+import { users, groups } from './data';
 
 export const buildSchema = () => {
   return makeExecutableSchema({
