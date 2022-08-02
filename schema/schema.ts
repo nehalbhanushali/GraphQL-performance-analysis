@@ -6,7 +6,7 @@ import { users, groups } from './data';
 export const buildSchema = () => {
   return makeExecutableSchema({
     typeDefs: readFileSync(join(__dirname, 'schema.graphql')).toString(),
-    // RESOLVERS - define where the data comes from and the technique for fetching the types defined in the schema. This resolver retrieves users from the "users" array above.
+    // RESOLVERS - define where the data comes from and the technique for fetching the types defined in the schema.
     resolvers: {
       Query: {
         users: async () => {

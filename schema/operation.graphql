@@ -1,7 +1,16 @@
 query Operation {
   users {
+    id
     name
+    emailID
     groups {
+      id
+      name
+      description
+      users
+    }
+    apps {
+      id
       name
       description
     }
