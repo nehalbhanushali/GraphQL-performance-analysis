@@ -2,10 +2,19 @@ import { ApolloServer, gql } from 'apollo-server';
 import { buildSchema } from '../schema/schema';
 // Note: Optional chaining (?.) is currently not supported in Node.js version 13 and below
 import { createApolloProfilerPlugin } from '@econify/graphql-request-profiler';
+import depthLimit from 'graphql-depth-limit';
+
+/*
+import {
+  GraphQLInputInt,
+  GraphQLInputFloat,
+} from 'graphql-input-number';
+*/
 
 // SERVER INSTANCE - The ApolloServer constructor requires two parameters: schema definition and set of resolvers.
 const server = new ApolloServer({
   schema: buildSchema(),
+  validationRules: [ depthLimit(1) ],
   plugins: [createApolloProfilerPlugin()],
 });
 
