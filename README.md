@@ -1,5 +1,8 @@
 # GraphQL-performance-analysis
 
+### to install packages
+npm install
+
 ### from the api repository, run
 npm start
 
