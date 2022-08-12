@@ -3,7 +3,7 @@
 ### to install packages
 npm install
 
-### from the api repository, run
+### from the root of the repository, run
 npm start
 
 ### From the profiler repository, run
